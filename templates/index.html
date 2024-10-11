@@ -11,21 +11,22 @@
     <div class="container mt-5">
         <h1 class="mb-4">Bitcoin Price Tracker</h1>
         <div id="error-message" class="alert alert-danger d-none" role="alert"></div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Current Bitcoin Prices</h5>
-                <table class="table table-dark table-striped">
-                    <thead>
-                        <tr>
-                            <th>Currency</th>
-                            <th>Rate</th>
-                        </tr>
-                    </thead>
-                    <tbody id="price-table-body">
-                        <!-- Price data will be inserted here -->
-                    </tbody>
-                </table>
-                <p id="last-updated" class="text-muted"></p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Price</h5>
+                        <div id="current-price"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Historical Prices</h5>
+                        <div id="historical-prices"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <button id="refresh-btn" class="btn btn-secondary mt-3">Refresh Prices</button>

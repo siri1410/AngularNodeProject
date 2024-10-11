@@ -1,8 +1,8 @@
 const { fromEvent, interval, merge } = rxjs;
 const { switchMap, startWith, catchError, tap } = rxjs.operators;
 
-const priceTableBody = document.getElementById('price-table-body');
-const lastUpdated = document.getElementById('last-updated');
+const currentPriceElement = document.getElementById('current-price');
+const historicalPricesElement = document.getElementById('historical-prices');
 const errorMessage = document.getElementById('error-message');
 const refreshBtn = document.getElementById('refresh-btn');
 
@@ -11,21 +11,33 @@ const fetchBitcoinPrice = () => {
     .then(response => response.json());
 };
 
+const formatPrice = (price) => {
+  return `${price.code} ${price.symbol} ${price.rate}`;
+};
+
 const updateUI = (data) => {
   errorMessage.classList.add('d-none');
-  priceTableBody.innerHTML = '';
   
-  for (const [currency, details] of Object.entries(data.bpi)) {
-    const row = `
-      <tr>
-        <td>${details.code} (${details.description})</td>
-        <td>${details.rate} ${details.symbol}</td>
-      </tr>
-    `;
-    priceTableBody.innerHTML += row;
-  }
+  // Update current price
+  const currentPrice = data.current.bpi;
+  currentPriceElement.innerHTML = `
+    <p><strong>USD:</strong> ${formatPrice(currentPrice.USD)}</p>
+    <p><strong>GBP:</strong> ${formatPrice(currentPrice.GBP)}</p>
+    <p><strong>EUR:</strong> ${formatPrice(currentPrice.EUR)}</p>
+    <p class="text-muted">Last updated: ${data.current.time.updated}</p>
+  `;
 
-  lastUpdated.textContent = `Last updated: ${data.time.updated}`;
+  // Update historical prices
+  historicalPricesElement.innerHTML = data.historical.map((item, index) => `
+    <div class="card mb-3">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">Timestamp ${index + 1}: ${item.timestamp}</h6>
+        <p><strong>USD:</strong> ${formatPrice(item.data.bpi.USD)}</p>
+        <p><strong>GBP:</strong> ${formatPrice(item.data.bpi.GBP)}</p>
+        <p><strong>EUR:</strong> ${formatPrice(item.data.bpi.EUR)}</p>
+      </div>
+    </div>
+  `).join('');
 };
 
 const handleError = (error) => {
