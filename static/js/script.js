@@ -7,7 +7,7 @@ const errorMessage = document.getElementById('error-message');
 const refreshBtn = document.getElementById('refresh-btn');
 
 const fetchBitcoinPrice = () => {
-  return fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+  return fetch('/api/bitcoin-price')
     .then(response => response.json());
 };
 
