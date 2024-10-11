@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Price Tracker</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Bitcoin Price Tracker</h1>
+        <div id="error-message" class="alert alert-danger d-none" role="alert"></div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Current Bitcoin Prices</h5>
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Currency</th>
+                            <th>Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="price-table-body">
+                        <!-- Price data will be inserted here -->
+                    </tbody>
+                </table>
+                <p id="last-updated" class="text-muted"></p>
+            </div>
+        </div>
+        <button id="refresh-btn" class="btn btn-secondary mt-3">Refresh Prices</button>
+    </div>
+
+    <script src="static/js/script.js"></script>
+</body>
+</html>
