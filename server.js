@@ -54,7 +54,10 @@ app.get('/api/bitcoin-price', async (req, res) => {
     });
   } catch (error) {
     console.error('Error fetching Bitcoin price:', error.message);
-    res.status(500).json({ error: 'Error fetching Bitcoin price. Please try again later.' });
+    res.status(500).json({ 
+      error: 'Error fetching Bitcoin price. Please try again later.',
+      details: error.message
+    });
   }
 });
 

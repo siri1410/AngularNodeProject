@@ -8,6 +8,8 @@ This project is a simple Bitcoin Price Tracker that displays the current and his
 - Historical price tracking (last 3 updates)
 - Automatic refresh every 60 seconds
 - Manual refresh option
+- Responsive design for both desktop and mobile devices
+- Side-by-side comparison of current and historical prices on desktop
 
 ## Prerequisites
 
@@ -48,6 +50,9 @@ Before you begin, ensure you have the following installed:
 4. The UI displays the current price and the last 3 historical prices.
 5. Prices are automatically refreshed every 60 seconds.
 6. Users can manually refresh prices using the "Refresh Prices" button.
+7. The layout is responsive, adapting to both desktop and mobile screens:
+   - On desktop: Current and historical prices are displayed side by side.
+   - On mobile: The layout stacks vertically for better readability.
 
 ## Local Testing
 
@@ -65,6 +70,7 @@ To test the application locally:
    - Initial load of current and historical prices
    - Manual refresh using the "Refresh Prices" button
    - Automatic refresh every 60 seconds
+   - Responsive layout on different screen sizes
    - Error handling (e.g., disconnecting from the internet temporarily)
 
 ## Troubleshooting TLS/SSL Errors

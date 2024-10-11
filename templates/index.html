@@ -6,25 +6,46 @@
     <title>Bitcoin Price Tracker</title>
     <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
     <script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"></script>
+    <style>
+        .price-card {
+            height: 100%;
+        }
+        #current-price, #historical-prices {
+            height: 100%;
+        }
+        .historical-price-card {
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            .historical-prices-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .historical-price-card {
+                width: calc(33.33% - 0.5rem);
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Bitcoin Price Tracker</h1>
         <div id="error-message" class="alert alert-danger d-none" role="alert"></div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-3">
+            <div class="col-lg-6 mb-3">
+                <div class="card price-card">
                     <div class="card-body">
                         <h5 class="card-title">Current Price</h5>
                         <div id="current-price"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="card mb-3">
+            <div class="col-lg-6 mb-3">
+                <div class="card price-card">
                     <div class="card-body">
                         <h5 class="card-title">Historical Prices</h5>
-                        <div id="historical-prices"></div>
+                        <div id="historical-prices" class="historical-prices-container"></div>
                     </div>
                 </div>
             </div>
@@ -32,6 +53,6 @@
         <button id="refresh-btn" class="btn btn-secondary mt-3">Refresh Prices</button>
     </div>
 
-    <script src="static/js/script.js"></script>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>
